@@ -1,0 +1,33 @@
+<ion-view>
+
+
+	<div class="bar bar-header" id="grad2">
+	         <button class="button-clear"  ng-click="navigation_home()">
+                <i class="ion-arrow-left-a iconstyle"></i>
+             </button>	
+	  <font color="white"><div class="title">Ad Detail</div></font>
+	</div>
+	<br><br>
+	<ion-content>
+
+	<br><br><br>
+	in cat detail
+
+			<div >
+        	<hr>
+			{{ad_detail.title}}
+			{{ad_detail.description}}
+			{{ad_detail.price}}
+			{{ad_detail._id}}
+	
+			<h4>Common Friend Name</h4>
+				<div ng-repeat="cf in commonfriend">
+					{{cf.FbFriend.fb_name}}
+				</div>
+			<button ng-click="navigation_edit(ad_detail._id)">Edit ad</button>	
+            <hr>
+            </div>
+
+    </ion-content>
+
+</ion-view>

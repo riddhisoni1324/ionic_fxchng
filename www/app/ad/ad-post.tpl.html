@@ -1,0 +1,419 @@
+<ion-view>
+   <ion-content>
+      <ion-scroll  direction="y" style="width: 370px; height: 600px" >
+         <div class="bar bar-header" id="grad2">
+            <font color="white">
+               <div class="title">Ad Post</div>
+            </font>
+         </div>
+         <br><br>
+         <div class="list">
+            <label class="item item-input item-select">
+               <div class="input-label">
+                  Category
+               </div>
+               <select ng-model="ad_detail.category" ng-options="category.category.name for category in categories">
+               </select>
+            </label>
+         </div>
+         <div class="list">
+            <label class="item item-input item-select">
+               <div class="input-label">
+                  Sub Category
+               </div>
+               <select ng-change="getBrands(ad_detail.sub_cat.id)" ng-model="ad_detail.sub_cat" ng-options="sub_cat.name for sub_cat in ad_detail.category.sub_cat">
+               </select>
+            </label>
+         </div>
+         <!--start cat : Mobile & tablet .... sub_cat : Mobile phones,Mobile Assesories,Tablets -->
+         <!--start cat : Electronics & Multimedia .... sub_cat : Laptop & desktop,computer accesories,camera & accesories  /* except also includes */--> 
+         <!-- start of main div -->
+         <div>
+            
+            <!-- index : 1 -->   
+            <div ng-show="ad_detail.category.category.name === 'Mobiles & Tablets' ||
+                          ad_detail.category.category.name === 'Electronics & Multimedia' ||
+                          ad_detail.category.category.name === 'Home Store' ||
+                          ad_detail.category.category.name === 'Fashion & Beauty' ||
+                          ad_detail.category.category.name === 'Kids & Baby' ||
+                          ad_detail.category.category.name === 'Real Estate' ||
+                          ad_detail.category.category.name === 'Automobiles' && 
+                          (ad_detail.sub_cat.name === 'Cars' || ad_detail.sub_cat.name === 'Motorcycles - Scooters')">
+               <div class="item item-divider">   I want to   </div>
+               <ion-radio ng-model="ad_detail.i_want_to" ng-value="'Buy'"> Buy  </ion-radio>
+               <ion-radio ng-model="ad_detail.i_want_to" ng-value="'Sell'"> Sell  </ion-radio>
+            </div>
+            <!-- replace above 2 button in cat : services -->
+            <div ng-show="ad_detail.category.category.name === 'Services'">
+               <div class="item item-divider">   I want to   </div>
+               <ion-radio  ng-model="ad_detail.i_want_to" ng-value="'Provide Service'"> Provide Service </ion-radio>
+               <ion-radio  ng-model="ad_detail.i_want_to" ng-value="'Get the Service'"> Get the Service  </ion-radio>
+            </div>
+            <!-- replace above 2 button in cat : jobs -->
+            <div ng-show="ad_detail.category.category.name === 'Jobs' && 
+              (ad_detail.sub_cat.name === 'Full Time Jobs'
+            || ad_detail.sub_cat.name === 'Part Time Jobs'
+            || ad_detail.sub_cat.name === 'Freelancers'
+            || ad_detail.sub_cat.name === 'Summer Trainees - Interns')">
+               <div class="item item-divider">   I want to   </div>
+               <ion-radio ng-model="ad_detail.i_want_to" ng-value="'Offer a Job'"> Offer a Job </ion-radio>
+               <ion-radio ng-model="ad_detail.i_want_to" ng-value="'Get a Job'"> Get a Job </ion-radio>
+            </div>
+            <!-- replace above 2 button in cat : community & events sub_cat : car pool & bike rides
+               sub_cat : musician    -->
+            <div ng-show="ad_detail.category.category.name === 'Community & Events' && 
+               (ad_detail.sub_cat.name === 'Carpool & Bike Ride Share' || 
+               ad_detail.sub_cat.name === 'Musicans, Artists, Bands')">
+               <div class="item item-divider">   I want to   </div>
+               <ion-radio ng-model="ad_detail.i_want_to" ng-value="'Offer'"> Offer </ion-radio>
+               <ion-radio ng-model="ad_detail.i_want_to" ng-value="'Seek'"> Seek </ion-radio>
+            </div>
+            
+            <!-- index : 2 -->                 
+            <!-- start of sub div for remove : cat : home store select-->
+            <!-- start of sub div for remove : cat : fashion & beauty select
+               cat : services    
+               cat : kids & baby
+               cat : jobs 
+               cat : community & events -->
+            <div ng-show="ad_detail.category.category.name === 'Mobiles & Tablets' || 
+               ad_detail.category.category.name === 'Electronics & Multimedia' || 
+               ad_detail.category.category.name === 'Automobiles' &&
+               (ad_detail.sub_cat.name === 'Cars' || ad_detail.sub_cat.name === 'Motorcycles - Scooters')">
+               <label class="item item-input item-select">
+                  <div class="input-label">
+                     Brand
+                  </div>
+                  <select ng-model="ad_detail.brand.name" ng-options="brand for brand in brands">
+                  </select>
+               </label>
+            </div>
+            <!-- end     -->  
+               
+            <!-- index : 3 -->              
+            <!-- start of sub div for show : cat : Mobile & tablets select-->      
+            <div ng-show="ad_detail.category.category.name === 'Mobiles & Tablets'">
+               <label class="item item-input item-select">
+                  <div class="input-label">
+                     Also Includes
+                  </div>
+                  <select ng-model="ad_detail.included">
+                     <option>charger</option>
+                     <option>data cable</option>
+                     <option>Earphones/Headphones</option>
+                     <option>Memory Card</option>
+                     <option>Others</option>
+                  </select>
+               </label>
+            </div>
+            <!-- end of sub div for show : cat : Mobile & tablets select-->      
+            
+            <!-- index : 4 -->
+            <label class="item item-input">
+               <div class="input-label">
+                  Title
+               </div>
+               <input type="text" ng-model="ad_detail.title" placeholder="Enter Ad Title">
+            </label>
+            
+            <!-- index : 5 -->
+            <label class="item item-input height_width_area">
+               <div class="input-label">
+                  Description
+               </div>
+               <textarea ng-model="ad_detail.description" rows="4" cols="5">
+                   description
+                </textarea>
+            </label>
+
+            
+            <!-- index : 6 -->
+            <!-- start of sub div for remove : cat : jobs select
+               show   :  cat : community & events sub_cat carpool & bike rides -->
+            <div ng-hide="ad_detail.category.category.name ==='Jobs' ||
+               ad_detail.category.category.name ==='Community & Events' &&   
+               (ad_detail.sub_cat.name === 'Musicans, Artists, Bands' ||
+               ad_detail.sub_cat.name === 'Lost and Found' ||
+               ad_detail.sub_cat.name === 'Charity, NGO, Volunteers' ||
+               ad_detail.sub_cat.name === 'Academic Educational' ||
+               ad_detail.sub_cat.name === 'Business Events' ||
+               ad_detail.sub_cat.name === 'Weekend Events' ||
+               ad_detail.sub_cat.name === 'Social Activities, Events')
+               " >
+               <label class="item item-input">
+                  <div class="input-label">
+                     price
+                  </div>
+                  <input ng-model="ad_detail.price" type="number" placeholder="Enter price">
+               </label>
+            </div>
+            <!-- end -->
+            
+            <!-- index : 7 -->
+            <!-- start of sub div for remove : cat : services select
+               cat : jobs -->
+            <div ng-hide="ad_detail.category.category.name === 'Services' || 
+               ad_detail.category.category.name === 'Jobs' ||
+               ad_detail.category.category.name === 'Pets' ||
+               ad_detail.category.category.name === 'Education & Coaching' ||
+               ad_detail.category.category.name === 'Community & Events'">
+               <div class="item item-divider">   Condition   </div>
+               <ion-radio ng-model="ad_detail.condition" ng-value="'Used'"> Used  </ion-radio>
+               <ion-radio ng-model="ad_detail.condition" ng-value="'New'"> New  </ion-radio>
+            </div>
+            <!-- end of sub div for remove : cat : services select-->   
+            <!-- index : 8 -->    
+            <!-- start of sub div for remove : cat : home store select
+               cat : fashion & beaty select
+               cat : services 
+               cat : kids & baby 
+               cat : jobs 
+               cat : automobiles subcat :cars-->
+            <div ng-show="ad_detail.category.category.name === 'Mobiles & Tablets' ||
+                          ad_detail.category.category.name === 'Electronics & Multimedia' ||
+                          ad_detail.category.category.name === 'Real Estate'">
+               <label class="item item-input item-select">
+                  <div class="input-label">
+                     How Old/Usage
+                  </div>
+
+                 <select ng-model="ad_detail.usage">
+                     <option>Less than 1 month</option>
+                     <option>1 month</option>
+                     <option>2 months</option>
+                     <option>6 months</option>
+                     <option>less than 1 year</option>
+                     <option>1 year</option>
+                     <option>1 year+</option>
+                     <option>2 years</option>
+                     <option>3 years</option>
+                     
+                  </select>
+               </label>
+            </div>
+            <!-- end -->
+            <!-- index : 9 -->
+            <!-- start of sub div for show : cat : jobs -->
+            <!-- start of sub div for remove : cat : jobs ..  sub_cat : resumes  -->
+            <div ng-show="ad_detail.category.category.name === 'Jobs' 
+            && (ad_detail.sub_cat.name === 'Full Time Jobs'
+            || ad_detail.sub_cat.name === 'Part Time Jobs'
+            || ad_detail.sub_cat.name === 'Freelancers'
+            || ad_detail.sub_cat.name === 'Summer Trainees - Interns')">
+               <label class="item item-input">
+                  <div class="input-label">
+                     Company Name
+                  </div>
+                  <input ng-model="ad_detail.job.company_name" type="text" placeholder="Enter Company Name">
+               </label>
+              
+            </div>
+
+            <div ng-show="ad_detail.category.category.name === 'Jobs'">
+               <label class="item item-input item-select">
+                  <div class="input-label">
+                     Role
+                  </div>
+                  <select ng-model="ad_detail.job.Role.name" ng-options="role for role in roles">
+                  </select>
+               </label>
+            </div>
+            <!-- end -->
+            <!-- start of sub div for remove : cat : jobs ..  sub_cat : resumes  -->
+            <div ng-show="ad_detail.category.category.name === 'Jobs' 
+            && (ad_detail.sub_cat.name === 'Full Time Jobs'
+            || ad_detail.sub_cat.name === 'Part Time Jobs'
+            || ad_detail.sub_cat.name === 'Freelancers'
+            || ad_detail.sub_cat.name === 'Summer Trainees - Interns')">
+
+              <label class="item item-input">
+               <div class="input-label">
+                  Designation
+               </div>
+               <input ng-model="ad_detail.job.designation" type="text" placeholder="Enter Designation">
+            </label>
+            </div>
+            
+            <!-- end -->
+            <div ng-show="ad_detail.category.category.name === 'Jobs'">
+              <label class="item item-input">
+               <div class="input-label">
+                  Education
+               </div>
+               <input ng-model="ad_detail.job.education" type="text" placeholder="Enter Education">
+            </label>
+            
+            <label class="item item-input">
+               <div class="input-label">
+                  Experience
+               </div>
+               <input ng-model="ad_detail.job.experience" type="text" placeholder="Enter Experience">
+            </label>
+            
+            <label class="item item-input">
+               <div class="input-label">
+                  Key Skills
+               </div>
+               <input ng-model="ad_detail.job.key_skills" type="text" placeholder="Enter key Skills">
+            </label>
+            </div>
+            
+            <div ng-show="ad_detail.category.category.name === 'Jobs' && ad_detail.sub_cat.name === 'Resumes'">
+              <label class="item item-input item-select">
+               <div class="input-label">
+                  Job Types
+               </div>
+               <select ng-model="ad_detail.job_type">
+                  <option>FT</option>
+                  <option>PT</option>
+                  <option>Freelancer</option>
+               </select>
+              </label>
+
+              <label class="item item-input">
+               <div class="input-label">
+                  Upload Resume
+               </div>
+               <input type="text">
+            </label>
+            </div>
+            
+
+            <!-- start of cat : jobs .. sub_cat : resumes -->
+            
+            
+            <!-- end of cat : jobs .. sub_cat : resumes -->    
+            <!-- end of cat : jobs -->
+            <!-- start of cat : car   -->
+            <div ng-show="ad_detail.category.category.name === 'Automobiles' &&
+               (ad_detail.sub_cat.name === 'Cars' || ad_detail.sub_cat.name === 'Motorcycles - Scooters')">
+              <label class="item item-input item-select">
+               <div class="input-label">
+                  Year
+               </div>
+               <select ng-model="ad_detail.year" ng-options="year for year in years">
+               </select>
+            </label>
+            
+            <label class="item item-input">
+               <div class="input-label">
+                  Kms Driven
+               </div>
+               <input ng-model="ad_detail.kms_driven" type="text" placeholder="Enter kms driven">
+            </label>
+            
+            <label class="item item-input">
+               <div class="input-label">
+                  Insurance Valid Till
+               </div>
+               <input ng-model="ad_detail.valid_till" type="text" placeholder="Enter insurance calid till">
+            </label>
+            <!-- start of div show only cat : car sub_cat : other vehicle -->
+            </div>
+
+            <div ng-show="ad_detail.category.category.name === 'Automobiles' &&
+               (ad_detail.sub_cat.name === 'Cars'||
+                ad_detail.sub_cat.name === 'Other Vehicles' ||
+                ad_detail.sub_cat.name === 'Motorcycles - Scooters')">
+               <label class="item item-input item-select">
+               <div class="input-label">
+                  Fuel Type
+               </div>
+               <select ng-model="ad_detail.fuel_type">
+                  <option selected>CNG</option>
+                  <option>Petrol</option>
+                  <option>Diesel</option>
+                  <option>Electric</option>
+                  <option>Hybrid</option>
+                  <option>LPG</option>
+                  <option>Petrol</option>
+               </select>
+            </label>
+            
+            </div>
+
+            <!-- end of cat : car sub_cat : other vehicle -->
+            <!-- start of div show only cat : car sub_cat : commercial transport -->
+            <div ng-show="ad_detail.category.category.name === 'Automobiles' 
+            && ad_detail.sub_cat.name === 'Commercial-Transportation'">
+              <label class="item item-input item-select">
+               <div class="input-label">
+                  Vehical Type
+               </div>
+               <select ng-model="ad_detail.vehicle_type">
+                  <option selected>Auto Richshaw</option>
+                  <option>Bulldozer</option>
+                  <option>Bus</option>
+                  <option>Cement Mixer</option>
+                  <option>Crane</option>
+                  <option>Cycle Richshaw</option>
+                  <option>Tempo</option>
+                  <option>Tractor</option>
+                  <option>Truck</option>
+                  <option>Van</option>
+                  <option>Other</option>
+               </select>
+            </label>
+            </div>
+            
+            <!-- end of cat : car sub_cat : commercial transport -->
+            <!-- start of cat : community & event -->
+            
+            <div ng-show="ad_detail.category.category.name === 'Community & Events' 
+            && (ad_detail.sub_cat.name === 'Academic Educational' ||
+               ad_detail.sub_cat.name === 'Business Events' ||
+               ad_detail.sub_cat.name === 'Weekend Events' ||
+               ad_detail.sub_cat.name === 'Social Activities, Events')">
+              <label class="item item-input">
+               <div class="input-label">
+                  Event Date
+               </div>
+               <input ng-model="ad_detail.event_date" type="date" >
+            </label>
+            
+            <label class="item item-input">
+               <div class="input-label">
+                  Venue
+               </div>
+               <input ng-model="ad_detail.venue" type="text" placeholder="Enter Value">
+            </label>
+            </div>
+            
+            <!-- end of cat : community & event -->
+            <!-- start of cat : real estate -->
+            
+            <div ng-show="ad_detail.category.category.name === 'Real Estate'">
+              <label class="item item-input">
+               <div class="input-label">
+                  city
+               </div>
+               <input ng-model="ad_detail.real_estate.city" type="text" placeholder="Enter City">
+            </label>
+            
+            <label class="item item-input">
+               <div class="input-label">
+                  Area
+               </div>
+               <input ng-model="ad_detail.real_estate.area" type="text" placeholder="Enter Area">
+            </label>
+            
+            <label class="item item-input">
+               <div class="input-label">
+                  Locality
+               </div>
+               <input ng-model="ad_detail.real_estate.locality" type="text" placeholder="Enter Locality">
+            </label>
+            </div>
+            
+            <!-- end of cat : real estate -->
+            <!-- end of cat : car -->
+            <button ng-click="print()">Post Ad</button>
+            
+         </div>
+         <!-- end of main div -->
+         <!--end cat : Electronics & Multimedia .... sub_cat : Laptop & desktop,computer accesories,camera & accesories  /* except also includes */--> 
+         <!--end cat : Mobile & tablet .... sub_cat : Mobile phones,Mobile Assesories,Tablets-->
+         
+      </ion-scroll>
+   </ion-content>
+</ion-view>

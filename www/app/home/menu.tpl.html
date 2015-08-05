@@ -1,0 +1,77 @@
+
+ <ion-side-menus enable-menu-with-back-views="false">
+
+       <ion-pane ion-side-menu-content >
+        
+                    <ion-nav-bar class="bar-stable">
+                      <ion-nav-back-button class="button-clear"><i class="icon ion-chevron-left"></i> Back</ion-nav-back-button>
+                    </ion-nav-bar>
+                    <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+      </ion-pane>
+
+     <ion-side-menu side="left">
+                    
+              <ion-content >
+
+                <div class="side-menu">
+                   <img src="img/side-bar.jpg" width="280" height="80"></img>
+                </div>
+                     <ion-list >
+                            <div ng-repeat="category in categories">
+                              <ion-item class="item-stable height no-border"
+                                        ng-click="toggleGroup(category.category.name)"
+                                        ng-class="{active: isGroupShown(category.category.name)}">
+                                  <i class="icon pull-right " ng-class="isGroupShown(category.category.name) ? 'ion-chevron-up' : 'ion-chevron-down'"></i>
+
+                                &nbsp;
+                                 {{category.category.name}}
+                              </ion-item>
+                              <ion-item class="item-accordion"
+                                        ng-repeat="sub_cat in category.sub_cat"
+                                        ng-show="isGroupShown(category.category.name)">
+                                <a class="button button-clear">{{sub_cat.name}}</a>
+                              </ion-item>
+                            </div>
+                       </ion-list>
+                    
+              </ion-content>
+
+     </ion-side-menu>
+
+
+
+     <ion-side-menu side="right" width="350">
+          <ion-header-bar class="bar-assertive" height="200" id="grad1">
+            <h1 class="center-left title">CATEGORIES</h1>
+          </ion-header-bar>
+          
+                     <ion-content >
+                               <ion-list >
+                                  <div ng-repeat="category in categories">
+                                    <ion-item class="item-stable height no-border"
+                                              ng-click="toggleGroup(category.category.name)"
+                                              ng-class="{active: isGroupShown(category.category.name)}">
+                                        <i class="icon pull-right " ng-class="isGroupShown(category.category.name) ? 'ion-chevron-up' : 'ion-chevron-down'"></i>
+                                      &nbsp;
+
+                                       {{category.category.name}}
+                                    </ion-item>
+                                    <ion-item class="item-accordion" ng-show="isGroupShown(category.category.name)">
+                                    <div class="title">All Ads In this Category</div> 
+                                    </ion-item>
+                                    <ion-item class="item-accordion"
+                                              ng-repeat="sub_cat in category.sub_cat"
+                                              ng-show="isGroupShown(category.category.name)" 
+                                              ng-click="navigate(sub_cat.id)">
+
+                                      <a class="button button-clear">{{sub_cat.name}}</a>
+                                    </ion-item>
+                                  </div>
+                             </ion-list>
+
+
+                               
+                          
+                    </ion-content>
+     </ion-side-menu>
+</ion-side-menus>

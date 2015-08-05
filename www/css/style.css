@@ -1,0 +1,234 @@
+/* Empty. Add your own CSS if you like */
+html  {
+	font-size: 1em;
+}
+
+.header_img{
+	background-image: url(../img/bg_header1.jpg);
+}
+
+#grad1 {
+    height: 45px;
+    width: 1330px;
+    margin: auto;
+    background: -webkit-linear-gradient(left, #FF6600 , #FF3300); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #FF6600, #FF3300); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #FF6600, #FF3300); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #FF6600, #FF3300); /* Standard syntax (must be last) */
+}
+
+#grad2 {
+    height: 45px;
+    margin: auto;
+    background: -webkit-linear-gradient(left, #FF6600 , #FF3300); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #FF6600, #FF3300); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #FF6600, #FF3300); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #FF6600, #FF3300); /* Standard syntax (must be last) */
+}
+.bar-header{
+	padding: 0px;
+    width: 101%;
+}
+
+
+.navbarl{
+	display: block; padding: auto;position: absolute;left: 4%;padding-top:2%;padding-bottom: 2%;
+}
+.navbarm{
+	display: block; padding: auto;font-color: white;padding-left: 50px;margin-top: 2%;
+}
+.navbarr{
+	display: block; position: absolute;top:4%;padding-bottom: 4%;
+    font-color: white; right: 5%; font-size: 1.25rem;  
+}
+
+.blue{
+	background-color: #2595A1;
+	width: 100%;
+	height: 80px;
+}
+
+.font-white{
+    color: white;text-align: center;padding: 5px;
+}
+
+.pull-right{
+	position: absolute;right: 10%;margin-top: 5px;margin-bottom: 5px;
+}
+
+.white-div{
+	text-align: center; margin-top: 30px; margin-bottom: 30px;
+}
+.center{
+	text-align: center;
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-top: 10px;
+	color:white;
+}
+.center-left{
+	text-align: center;
+	padding-left: 50px;
+	padding-right: 50px;
+	color:white;
+}
+
+.center-fb-button{
+	text-align: center;
+	padding-left: 30%;
+	padding-right: 90px;
+	padding-bottom: 10px;
+}
+.tabs-icon-top
+{
+ position: absolute;
+ top: 300px;
+
+}
+
+.item-input-inset .item-input-wrapper input {
+  padding-left: 4px;
+  height: 25px;
+  width: 50px;
+  padding: -10px;
+  background: transparent;
+  line-height: 18px;
+  }
+
+/*---------------side menu---------------*/
+
+
+.drop-down{
+	background-color: #B8B8B8;
+	width: 100%;
+	}
+
+
+.pull-right-icon{
+	position: absolute;right: 5%;
+}
+
+
+.item{
+height: 10px;
+
+}
+
+
+/*--------catagory---------*/
+
+
+.box-main{
+position: relative;
+}
+.box-sub{
+	position: absolute;
+	top: 40px; left: 10px;
+	margin: auto;
+}
+.font-size-25{
+	font-size: 0.625rem;
+}
+
+.img-resposive{
+
+	width: 100%;
+	height: 100%;
+}
+
+
+.leftborder
+{border: 1px solid black;
+}
+
+.middleborder
+{border: 1px solid black;text-align: left;display: block;padding: 5px;}
+
+.rightborder
+{border: 1px solid black; text-align: center;}
+
+
+
+.list .item.item-accordion {
+  line-height: 50px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.09s all linear;
+  height:50%;
+}
+.list .item.item-accordion.ng-hide {
+  line-height: 0px;
+  height: 50%;
+}
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+  display: block !important;
+}
+
+.height{
+ height: 50%;
+}
+
+.no-border{
+	border:0px;
+}
+
+.width-col{/*for transparent remove color*/
+	width: 100%;
+	background-color: white;
+	
+}
+
+.main-div{
+	background-color: #EFF1F5;
+    padding: 10px;
+    margin-top: 22%;
+}
+.pad{
+	background-color: white;
+	padding: 10px;
+}	
+
+.search{
+position: absolute;
+left: -150px;
+
+}
+
+.width-col-2{/*for transparent remove color*/
+	width: 90%;
+	background-color: white;
+	
+}
+
+.img-size{
+	width: 130px;
+	height:100px;
+	padding-right: 2px;
+}
+
+
+.box-main-2{
+position: relative;
+}
+.box-sub-2{
+	position: absolute;
+	bottom: 15px;
+	width: 95%;
+	margin: auto;
+	background-color: gray;
+	opacity: 0.6;
+
+    font-weight: bold;
+}
+
+
+
+.item
+{height:50px;}
+
+
+.height_width_area{
+	height: 100px;
+	width: 300px;
+}

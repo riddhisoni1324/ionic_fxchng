@@ -1,0 +1,32 @@
+<ion-view>
+	
+	<div class="bar bar-header" id="grad2">
+		<button class="button-clear"  ng-click="navigation_home()">
+                <i class="ion-arrow-left-a iconstyle"></i>
+        </button>
+	  <font color="white"><div class="title">Ad List</div></font>
+	</div>
+
+            
+<ion-content>
+<br><br>
+<div ng-repeat="ad in ads" ng-click="navigate(ad.doc._id)">
+<hr>
+
+	{{ad.fields.title}}
+	{{ad.fields.user_mobile}}
+	{{ad.doc._id}}
+<h4>Mutual Friend Name</h4>
+<div ng-repeat="mf in mutualfriend">
+	{{mf.mutual_friend_name}}
+</div>
+</div>
+
+<hr>
+
+
+</ion-content>
+
+<!-- end of content -->
+
+</ion-view>        

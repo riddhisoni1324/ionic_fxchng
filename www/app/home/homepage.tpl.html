@@ -1,0 +1,80 @@
+<ion-view >
+
+
+<!-- start of header -->
+      <div class="">
+        <ion-nav-bar class="bar bar-header bar-clear item-input-inset ">
+             <ion-nav-buttons >
+
+                 <div id="grad1">
+                  <div class="navbarl">
+                    <button class="button button-icon button-clear ion-navicon " menu-toggle="left" ng-click="sidemenu()"></button>
+                  </div>
+                  
+                  <div class="navbarm ">
+                   <div ng-show="searchicon" >
+                   <input type="text" placeholder="Enter your search"> 
+                   </div>
+ <!-- FXCHNG -->        
+                  </div>
+                  
+                  <div class="navbarr">
+                      <button class="button button-icon button-clear ion-android-search" ng-click="show()"></button>
+                                 
+                      <button class="button button-icon button-clear ion-grid" menu-toggle="right"></button>
+                  </div>
+                </div>
+                  
+          
+            </ion-nav-buttons>
+        </ion-nav-bar>
+      </div>
+
+          
+
+            
+<ion-content>
+
+
+
+
+     <span ng-repeat="category in categories ">
+                                        
+              {{category}}
+              <br>     
+                                        
+     </span>
+
+     <button class="button button-icon button-clear ion-grid" menu-toggle="right"></button>
+     
+     <button class="button" ng-click="nav_adpost()">Ad Post</button>
+
+     <button class="button" ng-click="createContact()">view contact</button>
+
+     <div class="list" ng-show="phoneContacts">
+            <div class="card" ng-repeat="contact in phoneContacts">
+              <div class="item item-divider">
+                {{ contact.name.formatted }}
+              </div>
+              <div class="item item-text-wrap">
+                <p><strong>Phone(s)</strong></p>
+                <div ng-repeat="number in contact.phoneNumbers">
+                  <p>{{ number.value }}</p>
+                </div>
+                <p><strong>Email(s)</strong></p>
+                <div ng-repeat="email in contact.emails">
+                  <p>{{ email.value }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+             
+
+
+
+</ion-content>
+
+<!-- end of content -->
+
+</ion-view>        
